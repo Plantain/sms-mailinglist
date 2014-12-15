@@ -32,7 +32,7 @@ def error_404(error):
 def error_500(error):
   return 'greg fucked up lol'
 
-@post('/addnum')
+@bottle.post('/addnum')
 class number(ndb.Model):
   numberds = ndb.IntegerProperty()
 def addnum():
@@ -40,7 +40,7 @@ def addnum():
     number.numberds = number
     number.put()
 
-@post('/anus')
+@bottle.post('/anus')
 def send_group():
   phone_numbers = request.forms.get('phone_numbers')
   message = request.forms.get('message')
