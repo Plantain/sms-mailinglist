@@ -1,5 +1,5 @@
 import bottle
-from bottle import Bottle, template
+from bottle import Bottle, route, request, response, template
 from twilio.rest import TwilioRestClient
 from google.appengine.api import users
 from google.appengine.ext import ndb
@@ -36,9 +36,10 @@ def addnum():
     number.numberds = number
     number.put()
 
-@bottle.post('/anus')
+@bottle.get('/anus')
 def send_group():
-  phone_numbers = request.forms.get('phone_numbers')
-  message = request.forms.get('message')
+  phone_numbers = [request.query.phone_numbers]
+  message = request.query.message
   for number in phone_numbers:
     clientobj.messages.create(to=number, from_=fromnum, body=message)
+  return 'omg it worked'
