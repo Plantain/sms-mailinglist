@@ -16,8 +16,7 @@ bottle = Bottle()
 
 @bottle.route('/')
 def home():
-    numbers = ['0426883141']
-    return template('index', numbers=numbers)
+    return template('index')
 
 def main():
   debug(True)
@@ -43,3 +42,15 @@ def send_group():
   for number in phone_numbers:
     clientobj.messages.create(to=number, from_=fromnum, body=message)
   return 'omg it worked'
+
+@bottle.route('/add_numbers')
+def add_numbers():
+  return template('add_numbers')
+
+@bottle.route('/list_numbers')
+def show_numbers():
+  return template('list_numbers', numbers=['0234'])
+
+@bottle.route('/send_message')
+def send_message():
+  return template('send_message')
