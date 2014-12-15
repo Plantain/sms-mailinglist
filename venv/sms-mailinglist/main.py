@@ -9,7 +9,7 @@ bottle = Bottle()
 @bottle.route('/')
 def hello():
     """Return a friendly HTTP greeting."""
-    return 'Hello World!'
+    return 'This is where the bootstrap template will go'
 
 
 # Define an handler for 404 errors.
