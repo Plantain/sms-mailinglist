@@ -1,9 +1,9 @@
 import bottle
 from bottle import Bottle, template
-from config import *
 from twilio.rest import TwilioRestClient
 from google.appengine.api import users
 from google.appengine.ext import ndb
+from config import *
 
 
 bottle.DEBUG = True
@@ -25,6 +25,10 @@ def main():
 def error_404(error):
     """Return a custom 404 error."""
     return 'Sorry, nothing at this URL.'
+
+@bottle.error(500)
+def error_500(error):
+  return 'greg fucked up lol'
 
 @post('/addnum')
 class number(ndb.Model):
