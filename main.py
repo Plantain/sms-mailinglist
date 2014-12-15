@@ -10,7 +10,7 @@ bottle = Bottle()
 @bottle.route('/')
 def home():
     numbers = ['0426883141']
-    return template('index', numbers)
+    return template('index', numbers=numbers)
 
 def main():
   debug(True)
