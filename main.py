@@ -1,5 +1,7 @@
 import bottle
 from bottle import Bottle, template
+from config import *
+from twilio.rest import TwilioRestClient
 
 bottle.DEBUG = True
 bottle = Bottle()
@@ -20,3 +22,11 @@ def main():
 def error_404(error):
     """Return a custom 404 error."""
     return 'Sorry, nothing at this URL.'
+
+@post('/anus')
+clientobj = TwilioRestClient(account,token)
+def send_group():
+  numbers = request.forms.get('numbers')
+  msg = request.forms.get('msg')
+  for number in numbers:
+    clientobj.messages.create(to=number, from_=fromnum, body=message)
