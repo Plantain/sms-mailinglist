@@ -6,6 +6,8 @@ from google.appengine.ext import ndb
 from config import *
 
 
+clientobj = TwilioRestClient(account,token)
+
 bottle.DEBUG = True
 bottle = Bottle()
 # Note: We don't need to call run() since our application is embedded within
@@ -39,7 +41,6 @@ def addnum():
     number.put()
 
 @post('/anus')
-clientobj = TwilioRestClient(account,token)
 def send_group():
   phone_numbers = request.forms.get('phone_numbers')
   message = request.forms.get('message')
