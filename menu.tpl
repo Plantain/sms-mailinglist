@@ -4,8 +4,8 @@
     </div>
 
     <ul class="nav navbar-nav">
-      <li><span class="glyphicon glyphicon-envelope"></span><a href="send_message">Send Message</a></li>
-      <li><span class="glyphicon glyphicon-list"></span><a href="list_numbers">List Numbers</a></li>
-      <li><span class="glyphicon glyphicon-plus"></span><a href="add_numbers">Add Numbers</a></li>
+      <li><a href="send_message"><span class="glyphicon glyphicon-envelope"></span> Send Message</a></li>
+      <li><a href="list_numbers"><span class="glyphicon glyphicon-list"></span> List Numbers</a></li>
+      <li><a href="add_numbers"><span class="glyphicon glyphicon-plus"></span> Add Numbers</a></li>
     </ul>
   </div>
