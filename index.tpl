@@ -1,27 +1,39 @@
-<html>
-<head>
-	<title>SMS mailing list</title>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-</head>
+% include('header.tpl')
 <body>
-<form action="send_message">
-Message:
-<textarea name="message" rows="10" cols="12"></textarea>
-</form>
-<form action="add_phone_numbers">
-Bulk add phone numbers:
-<textarea name="phone_numbers" rows="10" cols="12"></textarea>
-</br>
-<input type="submit" name="Add numbers">
-</form>
-<table class="table">
-<tr><th>#</th></tr>
-% for number in numbers:
+  <div class="navbar navbar-default" role="navigation">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">SMS Mailing list</a>
+    </div>
+
+    <ul class="nav navbar-nav">
+      <li><a href="send_message">Send Message</a></li>
+      <li><a href="list_numbers">List Numbers</a></li>
+      <li><a href="add_numbers">Add Numbers</a></li>
+    </ul>
+  </div>
+
+  <form action="send_message">
+    Message: 
+    <textarea name="message" rows="10" cols="12"></textarea>
+    <input type="submit" name="Send message">
+  </form>
+
+  <form action="add_phone_numbers">
+    Bulk add phone numbers: 
+    <textarea name="phone_numbers" rows="10" cols="12">
+    </textarea>
+    <br>
+    <input type="submit" name="Add numbers">
+  </form>
+  <table class="table">
+    <tr>
+      <th>#</th>
+    </tr>
+  % for number in numbers:
     <tr>
       <td>{{number}}</td>
     </tr>
-% end
-</table>
+  % end
+  </table>
 </body>
 </html>
