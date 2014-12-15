@@ -27,24 +27,13 @@ def error_404(error):
     """Return a custom 404 error."""
     return 'Sorry, nothing at this URL.'
 
-@bottle.post('/addnum')
-class number(ndb.Model):
-  numberds = ndb.IntegerProperty()
-def addnum():
+@bottle.route('/add_numbers')
+def add_numbers():
+  class number(ndb.Model):
+    numberds = ndb.IntegerProperty()
   for number in request.forms.get('phone_numbers'):
     number.numberds = number
     number.put()
-
-@bottle.get('/anus')
-def send_group():
-  phone_numbers = [request.query.phone_numbers]
-  message = request.query.message
-  for number in phone_numbers:
-    clientobj.messages.create(to=number, from_=fromnum, body=message)
-  return 'omg it worked'
-
-@bottle.route('/add_numbers')
-def add_numbers():
   return template('add_numbers')
 
 @bottle.route('/list_numbers')
@@ -53,4 +42,8 @@ def show_numbers():
 
 @bottle.route('/send_message')
 def send_message():
+  phone_numbers = [request.query.phone_numbers]
+  message = request.query.message
+  for number in phone_numbers:
+    clientobj.messages.create(to="+" + number, from_=fromnum, body=message)
   return template('send_message')
