@@ -31,7 +31,7 @@ def error_404(error):
 def add_numbers():
   class number(ndb.Model):
     numberds = ndb.IntegerProperty()
-  if request.forms.get:
+  if request.forms.get('phone_numbers'):
     for number in request.forms.get('phone_numbers'):
       number.numberds = number
       number.put()
