@@ -1,10 +1,12 @@
 import bottle
 from bottle import Bottle, template
-from config import *
 from twilio.rest import TwilioRestClient
 from google.appengine.api import users
 from google.appengine.ext import ndb
+from config import *
 
+
+clientobj = TwilioRestClient(account,token)
 
 bottle.DEBUG = True
 bottle = Bottle()
@@ -26,16 +28,19 @@ def error_404(error):
     """Return a custom 404 error."""
     return 'Sorry, nothing at this URL.'
 
-@post('/addnum')
+@bottle.error(500)
+def error_500(error):
+  return 'greg fucked up lol'
+
+@bottle.post('/addnum')
 class number(ndb.Model):
   numberds = ndb.IntegerProperty()
 def addnum():
   for number in request.forms.get('phone_numbers'):
     number.numberds = number
-    number.number
+    number.put()
 
-@post('/anus')
-clientobj = TwilioRestClient(account,token)
+@bottle.post('/anus')
 def send_group():
   phone_numbers = request.forms.get('phone_numbers')
   message = request.forms.get('message')
