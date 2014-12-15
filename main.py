@@ -32,7 +32,7 @@ class number(ndb.Model):
 def addnum():
   for number in request.forms.get('phone_numbers'):
     number.numberds = number
-    number.number
+    number.put()
 
 @post('/anus')
 clientobj = TwilioRestClient(account,token)
